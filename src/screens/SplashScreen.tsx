@@ -15,7 +15,7 @@ const SplashScreen: NavigationSwitchScreenComponent = ({
 
   async function loadResources(): Promise<void> {
     setTimeout(() => {
-      navigation.navigate('Home');
+      navigation.navigate('Onboarding');
     }, 2000);
   }
 

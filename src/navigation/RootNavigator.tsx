@@ -5,6 +5,8 @@ import {createSwitchNavigator, createAppContainer} from 'react-navigation';
 import AuthNavigator from './AuthNavigator';
 import SplashScreen from '../screens/SplashScreen';
 
+import OnboardingScreen from '../screens/OnboardingScreen';
+
 const Home: FC = () => (
   <SafeAreaView>
     <View>
@@ -27,6 +29,7 @@ const AppNavigator = createSwitchNavigator(
     Settings,
     Auth: AuthNavigator,
     Splash: SplashScreen,
+    Onboarding: OnboardingScreen,
   },
   {
     initialRouteName: 'Splash',

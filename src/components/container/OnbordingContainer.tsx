@@ -6,11 +6,12 @@ import {
   StyleSheet,
   Dimensions,
   Image,
-  TouchableOpacity,
   ImageSourcePropType,
 } from 'react-native';
 
 import {NavigationInjectedProps, withNavigation} from 'react-navigation';
+
+import Button from '../presentation/Button';
 
 interface Props extends Pick<NavigationInjectedProps, 'navigation'> {
   topText: string;
@@ -27,53 +28,41 @@ const Background: FC<Props> = ({
   image,
   secondText,
   index,
-}: Props) => {
-  return (
-    <>
-      <SafeAreaView />
-      <View style={styles.container}>
-        <View style={styles.firstCircle}>
-          <View style={styles.secondCircle}>
-            <View style={styles.thirdCircle}>
-              <View style={styles.fourthCircle}>
-                <Text style={styles.topText}>{topText}</Text>
-                <Image source={image} style={styles.img} />
-              </View>
+}: Props) => (
+  <>
+    <SafeAreaView />
+    <View style={styles.container}>
+      <View style={styles.firstCircle}>
+        <View style={styles.secondCircle}>
+          <View style={styles.thirdCircle}>
+            <View style={styles.fourthCircle}>
+              <Text style={styles.topText}>{topText}</Text>
+              <Image source={image} style={styles.img} />
             </View>
           </View>
         </View>
-        <View style={{position: 'absolute', bottom: 0}}>
-          <Text style={styles.secondText}>{secondText}</Text>
-          <View style={styles.tinyCircleContainer}>
-            <View
-              style={[
-                styles.tinyCircle,
-                index === 0 && styles.tinyCircleActive,
-              ]}
-            />
-            <View
-              style={[
-                styles.tinyCircle,
-                index === 1 && styles.tinyCircleActive,
-              ]}
-            />
-            <View
-              style={[
-                styles.tinyCircle,
-                index === 2 && styles.tinyCircleActive,
-              ]}
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Home')}>
-            <Text style={styles.buttonText}>Start</Text>
-          </TouchableOpacity>
-        </View>
       </View>
-    </>
-  );
-};
+      <View style={{position: 'absolute', bottom: 0}}>
+        <Text style={styles.secondText}>{secondText}</Text>
+        <View style={styles.tinyCircleContainer}>
+          <View
+            style={[styles.tinyCircle, index === 0 && styles.tinyCircleActive]}
+          />
+          <View
+            style={[styles.tinyCircle, index === 1 && styles.tinyCircleActive]}
+          />
+          <View
+            style={[styles.tinyCircle, index === 2 && styles.tinyCircleActive]}
+          />
+        </View>
+        <Button
+          buttonText="Start"
+          onPress={() => navigation.navigate('Home')}
+        />
+      </View>
+    </View>
+  </>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -156,19 +145,6 @@ const styles = StyleSheet.create({
   },
   tinyCircleActive: {
     backgroundColor: '#fff',
-  },
-  button: {
-    backgroundColor: '#fff',
-    padding: 10,
-    borderRadius: 25,
-    width: '120%',
-    alignSelf: 'center',
-    marginBottom: '10%',
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: 'rgb(255, 139, 97)',
-    fontSize: 20,
   },
 });
 
